@@ -1,0 +1,2 @@
+# StudentManagement
+Spring Boot application
