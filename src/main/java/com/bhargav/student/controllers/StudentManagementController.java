@@ -1,40 +1,25 @@
 package com.bhargav.student.controllers;
 
-import com.bhargav.student.dao.StudentDAO;
-
-import java.util.Scanner;
+import com.bhargav.student.models.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by Bhargav on 2/8/2018.
  */
+@RestController
 public class StudentManagementController {
 
-    public void studentEntry(){
+    @Autowired
+    Student student;
 
-        StudentDAO dao = new StudentDAO();
-
-        System.out.println("Enter Student details in the format Roll-Number,Name,Department. Example: 001,John,CSE");
-
-        Scanner input = new Scanner(System.in);
-
-        String entry;
-
-
-
-        entry = input.next();
-
-        input.close();
-
-
-
-        String candidate[] = entry.split(",");
-        dao.setRollNum(Integer.valueOf(candidate[0]));
-        dao.setName(candidate[1]);
-        dao.setDepartment(candidate[2]);
-
-
-
-        System.out.print(dao.toString());
+    @RequestMapping("/add")
+    public Student studentEntry(){
+        student.setDepartment("Cse");
+        student.setName("bhargav");
+        student.setRollNum(55);
+        return student;
     }
 
 
